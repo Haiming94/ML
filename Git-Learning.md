@@ -172,4 +172,87 @@
     3.Hash算法确定，输入有变化，输出一定有变化，且一般变化很大；
     4.Hash算法不可逆。
     
+## Git保存版本机制
+
+---- 基于快照的方式保存不同版本的文件，每个文件都会
+
+Git 分支管理的本质是创建和移动指针，针对没有更新的内容，直接用指针移动。
+    
+## 创建远程库
+
+---- 远程库的名字和本地库不一定要完全一样，但一般设置一样，便于项目管理。
+
+New repository --> 填写仓库名(完善描述、私有/公开、创建一个README用于初始化库[为了避免和本地冲突，一般不创建])
+
+## 在本地创建远程库地址别名
+
+复制远程库的 http 地址： https://github.com/Prime-Number/ML.git
+
+查看本地库已有的远程库：git remote -v
+
+添加远程库：git remote add [别名] [http地址] 例如：git remote add origin https://github.com/Prime-Number/ML.git
+
+## 本地库文件推送到远程库
+
+推送：git push [别名] [版本] 例如：git push origin master
+
+## 克隆远程库
+
+---- B 需要获取远程库到本地，使用 clone 操作
+
+git clone [http地址] 例如：git clone https://github.com/Prime-Number/ML.git
+    
+    完整地克隆远程库到本地
+    
+    创建 [别名 origin] 远程地址别名
+    
+    初始化本地库
+    
+## 邀请团队成员
+
+---- B 在本地修改了本地库，拟将本地库提交到远程库，需要 A 邀请 B 进入团队。
+
+在 github 上进行操作：
+
+    1.A 进入在线代码库 --> Settings --> Collaborators --> {输入拟邀请用户的 github 账号，点击 Add collaborator} --> {通过其他方式将 http地址 发送给 B}
+    
+    2.B 进入 A 给的 http地址，并选择 Accept invitation(成为团队成员)
+    
+    成为团队成员后，就可以 push 文件。
+    
+## 远程库修改的拉取操作
+
+---- B 上传文件后，A 需要将文件拉取（pull）下来。
+
+拉取(pull)有两个操作：fetch + merge
+    
+    A: git fetch [远程库地址别名 origin] [远程分支名] 例如：git fetch origin master {此时只是下载文件，并不会修改本地文件。}
+    
+    A: git merge [远程库地址别名 origin/远程分支名] 例如：git merge origin master
+    
+    或者直接用 pull 操作{一般用于修改很小，不会产生冲突的情况}：git pull origin master
+    
+## 协同开发时的冲突
+
+---- 当 A 和 B 同时对 <filename.xxx> 进行了修改，并先后推送到远程库。{此时先推送的成功，后推送的失败.}
+
+解决办法：
+
+    1.下载先上传的版本 version-1：git pull origin master
+    
+    2.修改冲突，再次提交新的版本 version-2.{注意，解决冲突后 commit 不能带文件名}
+
+## 跨团队操作
+
+---- 邀请 C 来参与项目。
+
+    1.C 去访问远程仓库（通过 http 地址），并点击右上角的 Fork 按钮 {注意，是以 C 的身份去点击}
+    
+    2.Fork 结束后，C 有一个完全一样的远程库（fork from A）
+    
+    3.C 可以对这个项目可以进行 clone，push 等操作.{本地修改，推送到远程}
+    
+    4.C 进入 C 的远程库 --> Pull request --> {填写 pull 申请}
+    
+    5.A 进入远程仓库 --> Pull request --> {获取 C 的请求，可以回信交流（而 C 也可以同样在线沟通）} --> Commits {查看 C 的提交}, Files changed {查看具体修改的文件} （对代码进行审核）--> {如果可以接受，回到 Pull request 点击 "Merge pull request" 进行代码合并}
     
