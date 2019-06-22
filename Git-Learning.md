@@ -58,4 +58,10 @@
 
     git status 查看当前项目信息
     
-    git add filename.xxx 用于追踪文件
+    git add <filename.xxx> 用于添加文件，添加到缓存区，可用于提交
+    
+    git rm --cached <filename.xxx> 从缓存区删除文件，但是不会删除工作区的文件
+    
+    git commit <filename.xxx> 提交文件 filename.xxx {而后就需要输入关于文件的 信息/备注/说明}
+    
+    注意，如果现在直接 vim <filename.xxx> 并进行修改，而后 git status 可以看到修改了 filename.xxx 文件的内容，可以用 git add <filename.xxx> 更新文件filename.xxx，或者 git chechout --<filename.xxx> 撤销刚刚的修改。或者直接 git commit <filename.xxx> 进行提交。
