@@ -256,3 +256,6 @@ git clone [http地址] 例如：git clone https://github.com/Prime-Number/ML.git
     
     5.A 进入远程仓库 --> Pull request --> {获取 C 的请求，可以回信交流（而 C 也可以同样在线沟通）} --> Commits {查看 C 的提交}, Files changed {查看具体修改的文件} （对代码进行审核）--> {如果可以接受，回到 Pull request 点击 "Merge pull request" 合并代码}
     
+## SSH 登录
+
+---- 
