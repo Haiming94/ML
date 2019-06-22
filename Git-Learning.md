@@ -64,6 +64,56 @@
     
     git commit <filename.xxx> 提交文件 filename.xxx {而后就需要输入关于文件的 信息/备注/说明}
     
-    注意，如果现在直接 vim <filename.xxx> 并进行修改，而后 git status 可以看到修改了 filename.xxx 文件的内容，可以用 git add <filename.xxx> 更新文件filename.xxx，或者 git chechout --<filename.xxx> 撤销刚刚的修改，可以git add <filename.xxx> 后用 git commit <filename.xxx> 进行提交。
+    注意，如果现在直接 vim <filename.xxx> 并进行修改，而后 git status 可以看到修改了 filename.xxx 文件的内容，可以用 git add <filename.xxx> 更新文件filename.xxx，或者 git chechout --<filename.xxx> 撤销刚刚的修改，可以直接用 git commit <filename.xxx> 进行提交。
     
     git commit -m "xxx" <filename.xxx> 这样提交可以免进 vim 写文件 信息/备注/说明
+
+## 版本的前进和后退
+
+    git log 查看项目版本、签名、日志信息（最完整形式）
+    
+    git log --pretty=oneline 以简洁的方式显示
+    
+    git log --oneline 以最简洁的方式显示
+    
+    git reflog 现实日志，有很多参考价值
+    
+## 版本前进后退
+
+    通过 git reflog 可以查看项目版本的版本信息，于是可以通过{索引值【推荐】、^符号、~符号}三种方式进行版本前进后退
+    
+    如果出现的结果如下：
+    xxxxxxx <HEAD -> master>HEAD@{0}:commit: insert yyyyyy edit
+    xxxxxxx HEAD@{1}:commit: insert yyyyyy edit
+    9a9ebe0 HEAD@{2}:commit: insert iiiiii edit
+    xxxxxxx HEAD@{3}:commit: insert jjjjjj edit
+    
+    git reset --hard 9a9ebe0  项目前进或者后退到索引的那个版本
+    
+    ^符号/~符号 ---- 只能后退
+    
+    git --reset --hard HEAD^  后退一步
+    
+    git --reset --hard HEAD^^^  后退三步
+    
+    git --reset --hard HEAD~3 后退三步
+    
+## hard、soft 和 mixed 参数对比
+
+    -- soft 参数
+        
+        仅仅在本地库移动 HEAD 指针
+
+    -- mixed 参数
+    
+        在本地库移动 HEAD 指针
+        
+        重置暂存区
+        
+    -- hard 参数
+    
+        在本地库移动 HEAD 指针
+        
+        重置暂存区
+        
+        重置工作区
