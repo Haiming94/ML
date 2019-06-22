@@ -82,7 +82,7 @@
 
     通过 git reflog 可以查看项目版本的版本信息，于是可以通过{索引值【推荐】、^符号、~符号}三种方式进行版本前进后退
     
-    如果出现的结果如下：
+    假设查看结果如下：
     xxxxxxx <HEAD -> master>HEAD@{0}:commit: insert yyyyyy edit
     xxxxxxx HEAD@{1}:commit: insert yyyyyy edit
     9a9ebe0 HEAD@{2}:commit: insert iiiiii edit
@@ -117,3 +117,8 @@
         重置暂存区
         
         重置工作区
+
+## 永久删除后找回
+
+---- 已经提交本地库后删除，然后找回。删除后，工作区就没有该文件了。(git 只要提交了，文件就一直在，不会被删除， 那么通过项目版本退回，即可找回文件)
+
