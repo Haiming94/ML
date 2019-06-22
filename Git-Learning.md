@@ -122,3 +122,47 @@
 
 ---- 已经提交本地库后删除，然后找回。删除后，工作区就没有该文件了。(git 只要提交了，文件就一直在，不会被删除， 那么通过项目版本退回，即可找回文件)
 
+## 添加到暂存区的删除文件找回
+
+---- 文件已经添加到暂存区，但是没有提交，文件被删除。此时，通过 git reset --hard HEAD 即可恢复文件
+
+## 比较文件
+
+---- 带文件名 <filename.xxx> 比较
+
+    git diff <filename.xxx> 和暂存区文件比较,
+
+    git diff HEAD <filename.xxx> 和本地库最新版本文件比较，
+
+    git diff HEAD^ <filename.xxx> 和历史版本比较，
+    
+    
+---- 不带文件名比较，与多个文件比较
+
+    git diff HEAD 与当前工作区的所有文件比较
+    
+## 分支操作
+
+    除了master分支还可以创建分支： 
+    
+    git branch -v 查看分支
+    
+    git branch [branchname] 创建分支
+    
+    git checkout [branchname] 切换分支
+    
+    合并分支(用于将最新修改的版本合并到 master 分支上，增加新内容)
+        
+        1.切换到master分支：git checkout master
+        
+        2.执行 merge 操作：git merge [branchname]
+    
+    解决冲突（合并中产生冲突：两个版本在同一个位置都有修改，系统无法确定保留哪一个文件，此时需要手动合并）
+    
+        通过 git merge [branchname] 会在合并的文件内部产生特殊符号以表示冲突，需要人为进行操作(编辑文件，删除特殊符号并修改好)。
+        
+        人为修改结束后，用 git add <filename.xx> 更新暂存区文件，但进一步提交必须用 git commit -m "xxx"（注意不带文件名）
+    
+    
+    
+    
